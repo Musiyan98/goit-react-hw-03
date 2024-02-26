@@ -1,17 +1,12 @@
+import css from './ContactList.module.css';
 import Contact from '../Contact/Contact';
 
 const ContactList = ({ ContactsList, onDelete }) => {
-  const deleteContact = ContactId => {
-    onDelete(prevUsers => {
-      return prevUsers.filter(Contact => Contact.id !== ContactId);
-    });
-  };
-
   return (
-    <ul>
+    <ul className={css.list}>
       {ContactsList.map(contactItem => (
-        <li key={contactItem.id}>
-          <Contact contactItem={contactItem} onDelete={deleteContact} />
+        <li className={css.listItem} key={contactItem.id}>
+          <Contact contactItem={contactItem} onDelete={onDelete} />
         </li>
       ))}
     </ul>
